@@ -1,6 +1,6 @@
-let taskList = document.querySelector('.list');
 let input = document.querySelector('.input'); 
- 
+
+
 
 // Done all tasks
 
@@ -8,8 +8,6 @@ let doneAllBtn = document.querySelector('#doneAll');
 
 doneAllBtn.addEventListener('click', () => {
 	let items = document.querySelectorAll('.item');   
-
-
 
 })
 
@@ -46,10 +44,13 @@ let editItem = (item, err) => {
 let removeAllBtn = document.querySelector('#removeAll');
 
 removeAllBtn.addEventListener('click', () => {
-	let childs = taskList.children;
-	for (let child of childs) {
-		child.remove();
-	} 
+	let taskList = document.querySelector('.list');
+	taskList.remove();
+	// пришлось удалять весь блок вместо каждого ребенка, и создавать новый блок  
+	// также скопировал таскЛист рядом с каждым упоминанием, а то один раз вызванный для блока не сработает для новосозданного, постоит пока че-нить новое не придумаю
+	let blockForHelp = document.querySelector('.add-task-block');		 
+	let newList = document.createElement('div'); newList.className = 'list';
+	blockForHelp.insertAdjacentElement('beforeBegin', newList)
 })
 
 
@@ -57,6 +58,8 @@ removeAllBtn.addEventListener('click', () => {
 // Remove one task 
 
 let removeItem = (item) => {
+	let taskList = document.querySelector('.list');
+
 	taskList.removeChild(item)
 }
 
@@ -72,6 +75,7 @@ addTaskBtn.addEventListener('click', () => {
 	errorMsg.style.display = 'none'  
 
 	if(input.value){
+		let taskList = document.querySelector('.list');
 
 		let item = document.createElement('div'); 			
 		item.className = 'item';  
