@@ -8,7 +8,21 @@ let doneAllBtn = document.querySelector('#doneAll');
 
 doneAllBtn.addEventListener('click', () => {
 	let items = document.querySelectorAll('.item');   
-
+	let checkedQuantity = []
+	
+	// возможно это не лучшее решение
+	for (let i = 0; i < items.length; i++) {
+		if(items[i].classList.contains('checked')) {
+			checkedQuantity.push(1)
+		}
+	}
+	for (let i = 0; i < items.length; i++) {
+		if(checkedQuantity.length == items.length) {
+			items[i].classList.remove('checked');
+		} else if(checkedQuantity.length < items.length){
+			items[i].classList.add('checked')
+		}
+	}
 })
 
 
@@ -50,7 +64,7 @@ removeAllBtn.addEventListener('click', () => {
 	// также скопировал таскЛист рядом с каждым упоминанием, а то один раз вызванный для блока не сработает для новосозданного, постоит пока че-нить новое не придумаю
 	let blockForHelp = document.querySelector('.add-task-block');		 
 	let newList = document.createElement('div'); newList.className = 'list';
-	blockForHelp.insertAdjacentElement('beforeBegin', newList)
+	blockForHelp.insertAdjacentElement('afterEnd', newList)
 })
 
 
