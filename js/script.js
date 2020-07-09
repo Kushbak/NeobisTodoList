@@ -2,6 +2,20 @@ let input = document.querySelector('.input');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Done all tasks
 
 let doneAllBtn = document.querySelector('#doneAll'); 
@@ -9,7 +23,7 @@ let doneAllBtn = document.querySelector('#doneAll');
 doneAllBtn.addEventListener('click', () => {
 	let items = document.querySelectorAll('.item');   
 	let checkedQuantity = []
-	
+
 	// возможно это не лучшее решение
 	for (let i = 0; i < items.length; i++) {
 		if(items[i].classList.contains('checked')) {
@@ -22,7 +36,7 @@ doneAllBtn.addEventListener('click', () => {
 		} else if(checkedQuantity.length < items.length){
 			items[i].classList.add('checked')
 		}
-	}
+	} 
 })
 
 
